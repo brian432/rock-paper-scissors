@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+$Scissors-Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
+$Paper-Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
+$Rock-Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
+$Lizard-Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
+$Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+//Neutral
+$Dark-Text: hsl(229, 25%, 31%);
+$Score-Text: hsl(229, 64%, 46%);
+$Header-Outline: hsl(217, 16%, 45%);
+
+//Background
+$Radial-Gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    min-width: 320px;
+}
+
+.App{
+    background:linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    min-height: 100vh;
+    text-align: center;
+    padding: 3rem .5rem;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 3px solid $Header-Outline;
+    border-radius: 1rem;
+    #span{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        color: white;
+        font-size: 1.5rem;
+        line-height: .8;
+    }
+    #score{
+        background: white;
+        border-radius: 5px;
+        padding: 5px;
+        width: 100px;
+        h4{
+            color:$Score-Text;
+            letter-spacing: 3px;
+        }
+        h1{
+            color: $Dark-Text;
+        }
+    }
+    
+}
+
+/*juego*/
+.juego{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    max-width:450px;
+    margin: 3rem auto;
+    row-gap: 10px;
+}
+
+
+/*Circulos a elegir*/
+.div-juegos{
+    display: flex;
+    width:140px;
+    height: 140px;
+    border-radius: 50%;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+}
+
+.paper{
+    grid-column: 1/3;
+    border: 14px solid hsl(230, 89%, 62%);
+}
+.rock{
+    grid-row: 2/3;
+    grid-column: 2/4;
+    border: 14px solid hsl(349, 71%, 52%);
+}
+.scissors{
+    grid-column: 3/5;
+    border: 14px solid hsl(39, 89%, 49%);
+}
+
+/*Cambio de tamaño de circulo cuando elegimos*/
+.resultado{
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 3rem auto;  
+    p{
+        margin-bottom: 2rem;
+        color: white;
+    }
+}
+
+.big{
+    width: 160px;
+    height: 160px;
+}
+
+
+.resultadoJuego{
+    align-self: center;
+    color: white;
+    .btn{
+        border: none;
+        padding: .3125rem;
+        border-radius:.25rem;
+        color: black;
+        background: white;
+        cursor: pointer;
+        margin-top: .5rem;
+    }
+    .btn:hover{
+        background: rgba(255, 255, 255, 0.9);
+    }
+    .btn:active{
+        position: relative;
+        bottom: -1px;
+    }
+    .btn-x{
+        width:6.875rem;
+        padding: .4375rem;
+        font-weight: 700;
+        color: $Header-Outline;
+    }
+}
+footer{
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    justify-content: flex-end;
+    #modal{
+        display: none;
+        background-color: rgba(0, 0, 0, 0.616);
+        position:fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;  
+        div{
+            width: max-content;
+            background: white;
+            border-radius: 20px;
+            margin: 10% auto;
+            position: relative;
+            padding: 10px;
+            #modal-rules{
+                display:flex;
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 0;
+                h2{
+                    color: $Dark-Text;
+                }
+                p{
+                    font-weight: 700;
+                    font-size: 1.8rem;
+                    color: $Header-Outline;
+                    cursor: pointer;
+                }
+            }
+            
+        }
+    }
+    
+}
+#rules{
+    padding: 5px;
+    background:transparent;
+    border: 3px solid $Header-Outline;
+    border-radius: 10px;
+    color:white;
+    width: 100px;
+    cursor:pointer;
+}
+
+.rules-active{
+    display: flex!important;
+}
+.pointer{
+    cursor: pointer;
+}
+
+@media (max-width:475px){
+    footer{
+        justify-content: center;
+    }
+    .resultado{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        #you{
+            grid-column: 1/3;
+            grid-row: 1/3;
+        }
+        #he{
+            grid-column: 3/5;
+            grid-row: 1/3;
+        }
+        .resultadoJuego{
+            grid-column: 2/4;
+            .btn{
+                width: 100%;
+                height: 50px;
+            }
+        }
+    }
+    .big{
+        width: 145px;
+        height: 145px;
+    }
+    
+    .mobile{
+        display: flex;
+        flex-direction: column-reverse!important;
+        gap: 20px;
+    }
+}
